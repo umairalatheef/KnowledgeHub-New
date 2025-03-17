@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-font: 'Poppins', sans-serif;
+  --secondary-font: 'Inter', sans-serif;
+
+  /* 🎨 Updated Color Palette */
+  --primary-color: #674188;  /* Deep Purple */
+  --secondary-color: #ffffff; /* Pure White Background */
+  --accent-color: #C3ACD0;    /* Soft Purple */
+  --background-color: #ffffff; /* Pure White */
+  --text-color: #000000;      /* Black */
+  --highlight-color: #462C6A; /* Darker Purple */
+}
+
+body {
+  font-family: var(--secondary-font);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--primary-font);
+  color: var(--primary-color); /* Deep Purple */
+  font-weight: 600;
+}
+
+/* Links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: 0.3s;
+  font-family: var(--secondary-font);
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* Buttons */
+button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-family: var(--secondary-font);
+}
+
+button:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* Sections */
+section {
+  padding: 50px 20px;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  text-align: center;
+  padding: 20px;
+  font-size: 1rem;
+  margin-top: 40px;
+  font-family: var(--secondary-font);
+}
+

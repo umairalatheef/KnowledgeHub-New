@@ -1,0 +1,331 @@
+/* =======================
+   🔹 Global Header Styles
+======================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 12px 20px;
+  position: relative;
+  z-index: 1001;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+  flex-wrap: wrap;
+}
+
+/* Dashboard Icon Always Visible */
+.dashboard-icon {
+  display: flex !important; /* Ensures it stays */
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 10px; */
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+/* Logo aligned left */
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* =======================
+   🔹 Navigation Menu
+======================= */
+.nav-container {
+  flex: 1; /* Allows it to take up available space */
+  display: flex;
+  justify-content: center; /* Centers the navigation links */
+  align-items: center;
+}
+
+/* Ensure Nav Items are in a Row */
+.nav-links {
+  list-style: none;
+  display: flex;  /* Make links appear in one row */
+  gap: 25px;  /* Add spacing between items */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline-block; /* Ensures items stay in a row */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: color 0.3s, background 0.3s;
+}
+
+.navbar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--accent-color);
+}
+
+/* =======================
+   🔹 Authentication Buttons
+======================= */
+.auth-buttons {
+  display: flex;
+  gap: 12px; /* Space between buttons */
+  margin-left: auto; /* Push buttons to the right */
+}
+
+/* 🔹 Login & Logout Button */
+.login-btn, .logout-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.login-btn:hover, .logout-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* 🔹 Register Button */
+.register-btn {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 8px 15px;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.register-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  transform: scale(1.05);
+}
+
+/* =======================
+   🔹 User Info Section
+======================= */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between text and logout button */
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.user-info .welcome-text {
+  font-weight: bold;
+  color: var(--highlight-color);
+}
+
+/* =======================
+   🔹 Mobile Responsive
+======================= */
+@media screen and (max-width: 768px) {
+  .user-info {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+  .dashboard-icon {
+    display: flex !important;
+  }
+}
+
+/* =======================
+   🔹 Mobile Menu Toggle
+======================= */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  padding: 5px 10px;
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-toggle:hover {
+  transform: rotate(90deg);
+}
+/* Prevent color change when clicked */
+.menu-toggle:focus, .menu-toggle:active {
+  color: inherit !important; /* Keeps the original color */
+  background: transparent !important; /* No background change */
+  outline: none;
+}
+
+
+/* =======================
+    Mobile Responsive Styles
+======================= */
+@media screen and (max-width: 1024px) {
+  .header {
+    flex-wrap: wrap;
+    padding: 12px 15px;
+  }
+
+  /* Hide Main Navigation */
+  .nav-container {
+    display: none;
+  }
+
+  /* Hide Auth Buttons on Large Screens */
+  .auth-buttons {
+    display: none;
+  }
+  .header-icons {
+    margin-left: auto; /*  Keeps icons right-aligned */
+  }
+
+  /* Show Mobile Menu Toggle */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Mobile Menu - Slide Down Animation */
+  .navbar.open ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: var(--secondary-color);
+    padding: 15px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    animation: slideDown 0.4s ease-in-out;
+  }
+
+  .navbar ul {
+    display: none;
+    /* flex-direction: column;
+    gap: 12px;
+    width: 100%; */
+  }
+
+  /* Show Login/Register inside the Menu */
+  .login-btn,
+  .register-btn {
+    display: block;
+    width: 90%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  /* 🔹 Mobile Menu Animation */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Hide welcome text on smaller screens */
+@media screen and (max-width: 768px) {
+  .welcome-text {
+    display: none;
+  }
+  .dashboard-icon {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--primary-color);
+  }
+  .header-title {
+    font-size: 18px; /* Adjust font size for small screens */
+    white-space: nowrap;
+  }
+
+  .header-left {
+    justify-content: flex-start;
+    /* width: 100%; */
+  }
+  .header-icons {
+    margin-left: auto; /* Push icons to the right */
+  }
+
+  .menu-toggle {
+    margin-left: auto; /* Ensures it aligns to the right */
+  }
+}
+
+
+
+/* Mobile Menu Dropdown */
+.mobile-menu {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background: var(--secondary-color);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1002;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px;
+  transition: background 0.3s;
+  text-align: center;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Fix Dashboard Icon Position */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;  /* Space between KnowledgeHub & Dashboard Icon */
+}
+/* Group Icons (Theme Toggle, Dashboard, Menu) */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Adjust spacing between icons */
+  margin-left: auto; /* Pushes icons to the right */
+}

@@ -1,0 +1,155 @@
+/* Global Styles */
+:root {
+  --primary-color: #674188; /* Deep Purple */
+  --secondary-color: #FFFFFF; /* White */
+  --accent-color: #C3ACD0; /* Soft Purple */
+  --background-color: #FFFFFF; /* Light Mode */
+  --text-color: #000000; /* Black for readability */
+  --highlight-color: #462C6A; /* Darker Purple */
+}
+
+/* Dark Mode */
+.dark-mode {
+  --background-color: #121212; /* Dark Background */
+  --text-color: #ffffff; /* Light Text */
+  --secondary-color: #1e1e1e; /* Darker section background */
+  --highlight-color: #C3ACD0; /* Light Purple for contrast */
+}
+
+.about-container {
+  text-align: center;
+  padding: 30px 50px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Flexbox layout to align text left and image right */
+.intro-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: auto;
+  gap: 50px;
+  background-color: var(--secondary-color);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Text section */
+.text-section {
+  flex: 1;
+  text-align: left;
+}
+
+.about-title {
+  font-size: 2rem;
+  color: var(--highlight-color);
+  font-weight: bold;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+.about-text {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* Image section */
+.image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.education-tree-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+/* Quotes Section */
+.quotes-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.slide-container {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.slide-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid var(--highlight-color);
+}
+
+.quote {
+  font-size: 1.4rem;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.author {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 900px) {
+  .intro-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .text-section {
+    text-align: center;
+    padding: 0 15px; 
+  }
+
+  .about-title {
+    font-size: 1.8rem; 
+    white-space: normal; 
+  }
+
+  .about-text {
+    font-size: 1.1rem;
+    max-width: 95%;
+    line-height: 1.5;
+  }
+
+  .education-tree-image {
+    max-height: 280px; 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-container {
+    padding: 15px;
+  }
+
+  .about-title {
+    font-size: 1.6rem;
+  }
+
+  .about-text {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .education-tree-image {
+    max-height: 220px;
+  }
+}

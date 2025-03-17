@@ -1,0 +1,19 @@
+# Ensure all text files use platform-specific line endings
+* text=auto
+
+# Force LF for shell scripts (fixes Docker execution issues)
+*.sh text eol=lf
+
+# Force LF for Docker-related files (prevents YAML parsing errors in Docker)
+Dockerfile text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Ensure JSON, Markdown, and Python files always use LF (recommended)
+*.json text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+
+# Allow Windows users to keep CRLF in some files (optional)
+*.bat text eol=crlf
+*.ps1 text eol=crlf

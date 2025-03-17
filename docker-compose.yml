@@ -1,0 +1,54 @@
+services:
+  db:
+    image: postgres:13
+    container_name: knowledgehub_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: knowledgehub_db
+      POSTGRES_USER: knowledgehub_user
+      POSTGRES_PASSWORD: knowledgehub_password
+      POSTGRES_HOST_AUTH_METHOD: trust  #Add this to avoid password errors
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    container_name: knowledgehub_backend
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://knowledgehub_user:knowledgehub_password@db:5432/knowledgehub_db
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000 &&
+             echo -e '\n🔗 Backend running at: http://localhost:8000\n'"
+
+  frontend:
+    build: ./frontend
+    container_name: knowledgehub_frontend
+    restart: always
+    depends_on:
+      - backend
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/app
+      - ./frontend/src:/app/src  # Mounts `src/`
+      - node_modules:/app/node_modules  # Use Docker-managed volume for node_modules
+    working_dir: /app
+    ports:
+      - "5173:5173"
+    command: >
+      sh -c "npm run dev -- --host 0.0.0.0 &&
+             echo -e '\n🔗 Backend: http://localhost:8000 \n🔗 Frontend: http://localhost:5173\n'"
+
+volumes:
+  postgres_data:  # Stores PostgreSQL data
+  node_modules:  # Ensures node_modules is stored properly in Docker

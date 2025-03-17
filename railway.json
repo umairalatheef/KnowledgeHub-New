@@ -1,0 +1,14 @@
+{
+    "build": {
+      "backend": {
+        "builder": "DOCKERFILE",
+        "dockerfilePath": "backend/Dockerfile"
+      }
+    },
+    "deploy": {
+      "backend": {
+        "startCommand": "gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT"
+      }
+    }
+  }
+  
